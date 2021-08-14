@@ -1,0 +1,12 @@
+name: Deploy to Server
+on: [push]
+jobs:
+  Deploy-to-Server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          known_hosts: 'host-from-github-actions'
+      - run: echo "🍏 This job's status is ${{ job.status }}."
